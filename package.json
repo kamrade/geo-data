@@ -1,0 +1,39 @@
+{
+  "name": "boilerplate",
+  "version": "0.0.5",
+  "description": "start point for my app",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "test",
+    "start"
+  ],
+  "author": "Denis Michailov",
+  "license": "ISC",
+  "devDependencies": {
+    "accounting": "^0.4.1",
+    "autobind-decorator": "1.3.2",
+    "babel": "5.8.23",
+    "babelify": "6.4.0",
+    "browser-sync": "2.9.11",
+    "browserify": "11.2.0",
+    "connect-history-api-fallback": "1.1.0",
+    "gulp": "3.9.1",
+    "gulp-autoprefixer": "3.1.0",
+    "gulp-clean-css": "^2.0.12",
+    "gulp-jade": "^1.1.0",
+    "gulp-notify": "2.2.0",
+    "gulp-rename": "1.2.2",
+    "gulp-sass": "^2.3.2",
+    "gulp-stylus": "2.1.0",
+    "gulp-uglify": "1.4.2",
+    "gulp-util": "3.0.7",
+    "history": "^1.12.5",
+    "install": "0.1.8",
+    "vinyl-buffer": "1.0.0",
+    "vinyl-source-stream": "1.1.0",
+    "watchify": "3.4.0"
+  }
+}
