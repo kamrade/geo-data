@@ -5,7 +5,6 @@ module.exports = (function(){
 
     var countries;
     var cities;
-    var year="2010";
 
     var createMap = function(el) {
         console.log('start creating map');
@@ -19,53 +18,118 @@ module.exports = (function(){
                             .scale([width/7]);
 
         // console.log( projection([100.544285, 13.726721]) );
-        var color = d3.scale.quantize()
-        			  .range([ "#dbdbdb", "#c2c2c2", "#949494", "#767676", "#4a4a4a" ]);
+        // var color = d3.scale.quantize()
+        // 			.range([ "#dbdbdb", "#c2c2c2", "#949494", "#767676", "#4a4a4a" ]);
+        var color = d3.scale.linear()
+                        .domain([0, 1367485388])
+                        .range(['#aaa', '#333']);
+
 
         var path = d3.geo.path()
                         .projection(projection);
+
+        var maxZoomIn = width*2;
+        var maxZoomOut = width/7;
+
+        var zoom = d3.behavior.zoom()
+            .translate( projection.translate() )
+            .scale( projection.scale() )
+            .scaleExtent( [maxZoomOut, maxZoomIn] );
+
+        var zoomIn = function() {
+            var newScale = Math.min( projection.scale() * 2, maxZoomIn );
+            zoomTo(newScale);
+        };
+
+        var zoomOut = function(){
+            var newScale = Math.max( projection.scale() * 2, maxZoomOut );
+            zoomTo(newScale);
+        }
+
+
+        var zoomTo = function(newScale){
+            var t = projection.translate();
+            var s = projection.scale();
+
+            t[0] -= width/2;
+            t[0] *= newScale/s;
+            t[0] += width/2;
+
+            t[1] -= height * 0.55;
+            t[1] *= newScale/s;
+            t[1] += height * 0.55;
+
+            zoom.translate(t).scale(newScale);
+            projection.translate(t).scale(newScale);
+
+            countries.transition()
+                    .ease('linear')
+                    .delay(50)
+                    .duration(500)
+                    .attr('d', path);
+            cities.transition()
+                    .ease('linear')
+                    .duration(500)
+                    .attr('cx', d => {
+                        return projection( [d.longitude, d.latitude])[0];
+                    })
+                    .attr('cy', d => {
+                        return projection( [d.longitude, d.latitude])[1];
+                    })
+        }
+
+        d3.select('#zoomIn')
+            .on('click', function() {
+                zoomIn();
+            });
+
+        d3.select('#zoomOut')
+            .on('click', function() {
+                zoomOut();
+            });
 
         var svg = d3.select(el)
                     .append('svg')
                     .attr('width', width)
                     .attr('height', height);
 
-        d3.csv('data/co2_emissions.csv', function(data){
-        // d3.csv('data/countries.csv', function(data){
+        d3.csv('data/countries_coma.csv', function(data){
 
             color.domain([
-                d3.min(data, function(d){
-                    return +d[year];
-                }),
+                0,
                 d3.max(data, function(d){
-                    return +d[year];
+                    return +d.Population;
                 })
             ]);
 
             d3.json('/data/geo.json', function(json){
+
                 for (var i = 0, l = data.length; i < l; i++) {
+
                     var dataCountryCode = data[i].countryCode;
-                    var dataValue = +data[i][year];
+                    var dataValue = +data[i].Population;
+
                     for(var j = 0, f = json.features.length; j < f; j++){
                         var jsonCountryCode = json.features[j].properties.iso_a3;
                         if(dataCountryCode == jsonCountryCode){
-                            json.features[j].properties.co2 = dataValue;
+                            json.features[j].properties.population = dataValue;
                             break;
                         }
                     }
                 }
-                svg.selectAll('path')
+
+                countries = svg.selectAll('path')
                     .data(json.features)
                     .enter()
                     .append('path')
                     .classed("country", true)
                     .attr('d', path)
                     .style('fill', d => {
-                        var value = d.properties.co2;
+                        var value = d.properties.population;
                         if(value){
                             return color(value);
                         } else {
-                            return '#d5d5d5';
+                            return '#e74630';
                         }
                     });
 
@@ -95,7 +159,7 @@ module.exports = (function(){
                         .style('opacity', .2);
 
 
-                    svg.selectAll('circle.area')
+                    cities = svg.selectAll('circle.area')
                         .data(data)
                         .enter()
                         .append('circle')
@@ -120,11 +184,8 @@ module.exports = (function(){
 
                 });
 
-
-
             }); // end d3.json()
         }); // end d3.csv()
-
     };
 
     return {
