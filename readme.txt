@@ -1,0 +1,5 @@
+- get data: http://naturalearthdata.com/
+- convert data: http://mapshaper.org/
+- can convert also with ogr2ogr (try to find it yourself)
+- http://www.latlong.net/
+- get cities lat-long - http://www.gpsvisualizer.com/geocoder/

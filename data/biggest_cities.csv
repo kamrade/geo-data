@@ -1,0 +1,87 @@
+City,Population,Area,density,latitude,longitude,name,desc,color,source,precision
+Shanghai,"1,78,36,133","2,605.80","6,845",31.225344,121.488892,Shanghai,"Shanghai, Huangpu District, Shanghai, CN",,MapQuest Open,city/town
+Lagos,"1,49,20,000","1,32","11,3",6.455058,3.39418,Lagos,"Lagos, Lagos Island, Lagos, NG",,MapQuest Open,city/town
+Istanbul,"1,41,60,467","5,196","2,725",41.009633,28.965165,Istanbul,"Istanbul, Fatih, Istanbul, TR",,MapQuest Open,city/town
+Karachi,"1,31,25,000",734,"17,88",24.86678,67.031129,Karachi,"Karachi, Karāchi District, Sindh, PK",,MapQuest Open,city/town
+Mumbai,"1,24,78,447",603,"20,694",18.95238,72.832711,Mumbai,"Mumbai, Greater Bombay, Maharashtra, IN",,MapQuest Open,city/town
+Moscow,"1,21,11,194","2,510.12","4,772",55.751634,37.618704,Moscow,"Moscow, Moscow, RU",,MapQuest Open,city/town
+San Paulo,"1,18,21,873","1,522.98","7,762",-21.954981,-49.023235,San Paulo,"São Paulo, BR",,MapQuest Open,state/province
+Beijing,"1,17,16,620","1,368.32","8,563",39.905963,116.391248,Beijing,"Beijing, Dongcheng District, Beijing, CN",,MapQuest Open,city/town
+Guangzhou,"1,10,70,654","3,843.43","2,88",23.130004,113.259001,Guangzhou,"Guangzhou City, Yuexiu District, Guangdong, CN",,MapQuest Open,city/town
+Delhi,"1,10,07,835",431.09,"25,535",28.651718,77.221939,Delhi,"Delhi, Delhi, IN",,MapQuest Open,city/town
+Lahore,"1,05,20,000","1,772","3,566",31.562192,74.322852,Lahore,"Lahore, Lahore District, Punjab, PK",,MapQuest Open,city/town
+Shenzhen,"1,04,67,400","1,991.64","5,255",22.544267,114.054533,Shenzhen,"Shenzhen, Futian District, Guangdong, CN",,MapQuest Open,city/town
+Seoul,"1,04,42,426",605.21,"17,254",37.565486,126.97799,Seoul,"Sogong-dong, KR",,MapQuest Open,NEIGHBORHOOD
+Jakarta,"97,61,407",664.12,"14,698",-6.175394,106.827183,Jakarta,"Jakarta, Gambir, Jakarta Special Capital Region, ID",,MapQuest Open,city/town
+Tianjin,"93,41,844","4,037","2,314",39.123564,117.198079,Tianjin,"Tianjin, Heping District, Tianjin, CN",,MapQuest Open,city/town
+Chennai,"89,81,087",426,"21,082",13.079691,80.282953,Chennai,"Chennai, Tamil Nadu, IN",,MapQuest Open,city/town
+Tokyo,"89,67,665",617.18,"14,4",35.682838,139.758967,Tokyo,"Tokyo, Chiyoda, JP",,MapQuest Open,city/town
+Cairo,"89,22,949","3,085.10","2,892",30.048819,31.243666,Cairo,"Cairo, Cairo Governorate, EG",,MapQuest Open,city/town
+Dhaka,"89,06,039",302.92,"29,401",23.759357,90.378814,Dhaka,"Dhaka, Dhaka Division, BD",,MapQuest Open,city/town
+Mexico City,"88,73,017","1,485.49","5,973",19.43253,-99.13321,Mexico City,"Mexico City, Cuauhtémoc, Mexico City, MX",,MapQuest Open,city/town
+Kinshasa,"87,54,000","2,016","4,342",-4.321705,15.312597,Kinshasa,"Kinshasa, Kinshasa, Kinshasa, CD",,MapQuest Open,city/town
+Bangalore,"84,25,970",709.5,"11,876",12.97912,77.5913,Bangalore,"Bengaluru, Bangalore Urban, Karnataka, IN",,MapQuest Open,city/town
+New York,"83,36,697",783.7,"10,637",55.0253,-1.48695,New York,"New York, Tyne and Wear, England, GB",,MapQuest Open,city/town
+London,"83,08,369","1,572.15","5,285",42.988097,-81.246029,London,"London, ON, CA",,MapQuest Open,city/town
+Bangkok,"82,80,925","1,568.74","5,28",13.754253,100.493087,Bangkok,"Bangkok, กรุงเทพมหานคร, TH",,MapQuest Open,city/town
+Tehran,"82,44,535",760,"10,359",35.686172,51.422352,Tehran,"Tehran, Tehran, IR",,MapQuest Open,city/town
+Dongguan,"82,20,237","2,465","3,335",23.044928,113.752478,Dongguan,"Dongguan, Guangdong, CN",,MapQuest Open,city/town
+Ho Chi Minh City,"76,81,700","2,095.60","3,667",10.77548,106.702145,Ho Chi Minh City,"Ho Chi Minh City, Ho Chi Minh City, VN",,MapQuest Open,city/town
+Bogota,"76,74,366","1,587","4,836",4.598048,-74.076087,Bogota,"Bogota, Distrito Capital de Bogotá, CO",,MapQuest Open,city/town
+Lima,"76,59,521",804.38,"9,522",-12.061642,-77.036711,Lima,"Lima, Lima, PE",,MapQuest Open,city/town
+Hong Kong,"71,08,100","1,108","6,415",22.279328,114.162813,Hong Kong,"Hong Kong, Central and Western District, Hong Kong, CN",,MapQuest Open,city/town
+Hanoi,"68,44,100","3,323.60","2,059",21.02921,105.85247,Hanoi,"Hanoi, Hanoi, VN",,MapQuest Open,city/town
+Hyderabad,"68,09,970",621.48,"10,958",17.361623,78.474731,Hyderabad,"Hyderabad, Medak, Telangana, IN",,MapQuest Open,city/town
+Wuhan,"64,34,373",888.42,"7,242",30.596021,114.29928,Wuhan,"Wuhan, Jiang'an District, Hubei, CN",,MapQuest Open,city/town
+Rio de Janeiro,"64,29,923","1,182.30","5,438",-22.911014,-43.209373,Rio de Janeiro,"Rio de Janeiro, Rio de Janeiro, Rio de Janeiro, BR",,MapQuest Open,city/town
+Foshan,"61,51,622","2,034","3,024",23.024917,113.114617,Foshan,"Foshan, Chancheng District, Guangdong, CN",,MapQuest Open,city/town
+Ahmedabad,"55,70,585",475,"11,727",23.021624,72.579707,Ahmedabad,"Ahmedabad, Gujarat, IN",,MapQuest Open,city/town
+Baghdad,"54,02,486","1,134","4,064",33.302425,44.378799,Baghdad,"Baghdad, Karkh, Baghdad, IQ",,MapQuest Open,city/town
+Singapore,"53,99,200",712.4,"7,579",1.290453,103.852038,Singapore,"Singapore, Central Singapore Community Development Council, SG",,MapQuest Open,city/town
+Shantou,"53,91,028","2,064.42","2,611",23.365298,116.694882,Shantou,"Shantou, Jinping District, Guangdong, CN",,MapQuest Open,city/town
+Riyadh,"51,88,286",800,"6,485",24.631969,46.715065,Riyadh,"Riyadh, SA",,MapQuest Open,city/town
+Jeddah,"51,12,018","1,23","2,789",21.582225,39.16404,Jeddah,"Jeddah, SA",,MapQuest Open,city/town
+Santiago,"50,40,028","2,03","2,469",-33.437913,-70.650456,Santiago,"Santiago, Provincia de Santiago, Región Metropolitana de Santiago, CL",,MapQuest Open,city/town
+Saint Petersburg,"50,23,313","1,399","3,48",59.939366,30.315363,Saint Petersburg,"Saint Petersburg, Saint Petersburg, RU",,MapQuest Open,city/town
+Qalyubia,"48,11,673","1,001.09","4,806",30.333118,31.222013,Qalyubia,"Qalyubia Governorate, EG",,MapQuest Open,state/province
+Chengdu,"47,41,929",421,"11,26",30.676555,104.061278,Chengdu,"Chengdu, Qingyang District, Sichuan, CN",,MapQuest Open,city/town
+Alexandria,"46,16,625","2,68","1,723",31.199004,29.894379,Alexandria,"Alexandria, Alexandria Governorate, EG",,MapQuest Open,city/town
+Ankara,"45,50,662","2,516","1,551",39.922073,32.853758,Ankara,"Ankara, Çankaya, Ankara, TR",,MapQuest Open,city/town
+Chongqing,"45,13,100","1,435","3,145",29.558571,106.549282,Chongqing,"Chongqing, Central Chongqing, Chongqing, CN",,MapQuest Open,city/town
+Kolkata,"44,86,679",200.7,"24,252",22.567746,88.347602,Kolkata,"Kolkata, Hāora, West Bengal, IN",,MapQuest Open,city/town
+Xi'an,"44,83,426",832,"5,388",34.342971,108.935274,Xi'an,"Xi'an, Weiyang District, Shaanxi, CN",,MapQuest Open,city/town
+Surat,"44,62,002",326.515,"13,666",21.186461,72.808128,Surat,"Surat, Bharūch, Gujarat, IN",,MapQuest Open,city/town
+Johannesburg,"44,34,827","1,645","2,696",-26.205,28.049722,Johannesburg,"Johannesburg, City of Johannesburg Metropolitan Municipality, Gauteng, ZA",,MapQuest Open,city/town
+Nanjing,"43,93,857",742.85,"5,915",23.413611,120.384722,Nanjing,"Nanjing, Chiayi County, Taiwan Province, TW",,MapQuest Open,city/town
+Dar es Salaam,"43,64,541","1,590.50","2,744",-6.814274,39.280376,Dar es Salaam,"Dar es Salaam, Dar es Salaam, TZ",,MapQuest Open,city/town
+Yangon,"43,50,000",598.75,"6,828",17.059434,96.11339,Yangon,"Yangon, MM",,MapQuest Open,state/province
+Abidjan,"42,88,000","2,119","2,024",5.320357,-4.016107,Abidjan,"Abidjan, Abidjan, CI",,MapQuest Open,city/town
+Harbin,"42,80,701","1,718.20","2,491.40",45.765667,126.616058,Harbin,"Harbin, Daoli District, Heilongjiang, CN",,MapQuest Open,city/town
+Zhengzhou,"41,22,087","1,006","4,097",34.759188,113.652408,Zhengzhou,"Zhengzhou, Erqi District, Henan, CN",,MapQuest Open,city/town
+Suzhou,"40,74,000","1,679.20","2,426",31.298476,120.622239,Suzhou,"Suzhou, Gusu District, Jiangsu, CN",,MapQuest Open,city/town
+Sydney,"39,56,000","2,037","1,942",-33.867957,151.210047,Sydney,"Sydney, Sydney, NSW, AU",,MapQuest Open,NEIGHBORHOOD
+New Taipei City,"39,10,086","2,052.57","1,905",25.012027,121.465717,New Taipei City,"New Taipei City, New Taipei City, TW",,MapQuest Open,city/town
+Los Angeles,"38,19,702","1,29","2,94",34.054394,-118.243941,Los Angeles,"Los Angeles, Los Angeles County, CA, US",,MapQuest Open,city/town
+Melbourne,"37,61,000","2,543","1,479",-37.814218,144.963161,Melbourne,"Melbourne, City of Melbourne, Victoria, AU",,MapQuest Open,city/town
+Cape Town,"37,40,026","2,461","1,52",-33.928992,18.417396,Cape Town,"Cape Town, City of Cape Town, Western Cape, ZA",,MapQuest Open,city/town
+Shenyang,"37,17,098",166,"22,392",41.804529,123.427786,Shenyang,"Shenyang, Shenhe District, Liaoning, CN",,MapQuest Open,city/town
+Yokohama,"36,80,267",437.38,"8,414",35.455592,139.572196,Yokohama,"三浦郡, 三浦郡, JP",,MapQuest Open,city/town
+Busan,"36,00,381",766.12,"4,666",27.918868,68.23265,Busan,"Busan, Shikārpur District, Sindh, PK",,MapQuest Open,city/town
+Hangzhou,"35,60,391",728.19,"4,889",30.275674,120.150486,Hangzhou,"Hangzhou, Gongshu District, Zhejiang, CN",,MapQuest Open,city/town
+Quanzhou,"35,20,846","1,062","3,315",24.90388,118.585146,Quanzhou,"Quanzhou, Licheng District, Fujian, CN",,MapQuest Open,city/town
+Durban,"34,42,361","2,297","1,499",-29.861825,31.00991,Durban,"Durban, eThekwini Metropolitan Municipality, KwaZulu-Natal, ZA",,MapQuest Open,city/town
+Casablanca,"34,27,000",386,"8,878",33.594973,-7.618801,Casablanca,"Casablanca, préfecture d'arrondissements de Casablanca-Anfa عمالة مقاطعات الدار البيضاء أنفا, Casablanca-Settat, MA",,MapQuest Open,city/town
+Algiers,"34,15,811",363,"9,4",36.775348,3.060066,Algiers,"Algiers, Alger Centre, Algiers, DZ",,MapQuest Open,city/town
+Berlin,"34,01,147",892,"3,813",52.517037,13.38886,Berlin,"Berlin, Berlin, DE",,MapQuest Open,city/town
+Nairobi,"33,75,000",696,"4,849",-1.283253,36.817245,Nairobi,"Nairobi, Nairobi, KE",,MapQuest Open,city/town
+Hefei,"33,52,076",838.52,"3,998",31.822809,117.221803,Hefei,"Hefei, Shushan District, Anhui, CN",,MapQuest Open,city/town
+Kabul,"32,89,000",275,"11,96",34.519706,69.16243,Kabul,"Kabul, Kabul, AF",,MapQuest Open,city/town
+Pyongyang,"32,55,388","3,194","1,019",39.019518,125.753088,Pyongyang,"Pyongyang, Pyongyang, KP",,MapQuest Open,city/town
+Madrid,"32,13,271",698,"4,604",40.416705,-3.703582,Madrid,"Madrid, Área metropolitana de Madrid y Corredor del Henares, Community of Madrid, ES",,MapQuest Open,city/town
+Ekurhuleni,"31,78,470","1,975","1,609",-26.373731,28.167634,Ekurhuleni,"Germiston, Ekurhuleni Metropolitan Municipality, Gauteng, ZA",,MapQuest Open,NEIGHBORHOOD
+Pune,"31,15,431",450.69,"6,913",18.520316,73.85432,Pune,"Pune, Pune, Maharashtra, IN",,MapQuest Open,city/town
+Addis Ababa,"31,03,673",526.99,"5,889",9.010793,38.761253,Addis Ababa,"Addis Ababa, Addis Ababa, ET",,MapQuest Open,city/town
+Changsha,"30,93,980",969,"3,19",28.187377,112.983582,Changsha,"Changsha, Yuhua Districty, Hunan, CN",,MapQuest Open,city/town
+Jaipur,"30,73,350",485,"6,337",26.916129,75.820406,Jaipur,"Jaipur, Rajasthan, IN",,MapQuest Open,city/town
+Xuzhou,"30,53,778",393,"7,77",34.205107,117.278248,Xuzhou,"Xuzhou, Yunlong District, Jiangsu, CN",,MapQuest Open,city/town
+Wenzhou,"30,39,500","1,187.88","2,558",28.022199,120.648392,Wenzhou,"Wenzhou, Wenzhou Metropolitan Area, Zhejiang, CN",,MapQuest Open,city/town

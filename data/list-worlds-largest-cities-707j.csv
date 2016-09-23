@@ -1,0 +1,91 @@
+Rank,City,Population,Definition,Area (km²),Population density (/km²),Country
+1,Shanghai,"1,78,36,133",Core districts,"2,605.80","6,845", China
+2,Lagos,"1,49,20,000",Metropolitan area/core districts,"1,320","11,300", Nigeria
+3,Istanbul,"1,41,60,467",Core districts,"5,196","2,725", Turkey
+4,Karachi,"1,31,25,000",City District,734,"17,880", Pakistan
+5,Mumbai,"1,24,78,447",Municipal Corporation,603,"20,694", India
+6,Moscow,"1,21,11,194",Federal City,"2,510.12","4,772", Russia
+7,São Paulo,"1,18,21,873",Municipality,"1,522.98","7,762", Brazil
+8,Beijing,"1,17,16,620",Core districts,"1,368.32","8,563", China
+9,Guangzhou,"1,10,70,654",Core districts,"3,843.43","2,880", China
+10,Delhi,"1,10,07,835",Municipal Corporation,431.09,"25,535", India
+11,Lahore,"1,05,20,000",City District,"1,772","3,566", Pakistan
+12,Shenzhen,"1,04,67,400",All districts,"1,991.64","5,255", China
+13,Seoul,"1,04,42,426",Special City,605.21,"17,254", South Korea
+14,Jakarta,"97,61,407",Special capital district,664.12,"14,698", Indonesia
+15,Tianjin,"93,41,844",Core districts,"4,037","2,314", China
+16,Chennai,"89,81,087",Municipal Corporation,426,"21,082", India
+17,Tokyo,"89,67,665",23 Special Wards,617.18,"14,400", Japan
+18,Cairo,"89,22,949",Governorate,"3,085.10","2,892", Egypt
+19,Dhaka,"89,06,039",City Corporation,302.92,"29,401", Bangladesh
+20,Mexico City,"88,73,017",Federal District,"1,485.49","5,973", Mexico
+21,Kinshasa,"87,54,000",City-Province,"2,016","4,342", Democratic Republic of the Congo
+22,Bangalore,"84,25,970",Municipal Corporation,709.5,"11,876", India
+23,New York,"83,36,697",Five Boroughs,783.7,"10,637", United States
+24,London,"83,08,369",Greater London,"1,572.15","5,285", United Kingdom
+25,Bangkok,"82,80,925",Administrative area,"1,568.74","5,280", Thailand
+26,Tehran,"82,44,535",City proper,760,"10,359", Iran
+27,Dongguan,"82,20,237",Prefecture-level city,"2,465","3,335", China
+28,Ho Chi Minh City,"76,81,700",Province-level municipality,"2,095.60","3,667", Vietnam
+29,Bogotá,"76,74,366",Capital district,"1,587","4,836", Colombia
+30,Lima,"76,59,521",Core districts,804.38,"9,522", Peru
+31,Hong Kong,"71,08,100",Special Administrative Region,"1,108","6,415", Hong Kong
+32,Hanoi,"68,44,100",Province-level municipality,"3,323.60","2,059", Vietnam
+33,Hyderabad,"68,09,970",Municipal Corporation,621.48,"10,958", India
+34,Wuhan,"64,34,373",Central districts,888.42,"7,242", China
+35,Rio de Janeiro,"64,29,923",Municipality,"1,182.30","5,438", Brazil
+36,Foshan,"61,51,622",City Proper + Inner Suburbs,"2,034","3,024", China
+37,Ahmedabad,"55,70,585",Municipal Corporation,475,"11,727", India
+38,Baghdad,"54,02,486",City proper,"1,134","4,064", Iraq
+39,Singapore,"53,99,200",City State,712.4,"7,579", Singapore
+40,Shantou,"53,91,028",Prefecture-level city,"2,064.42","2,611", China
+41,Riyadh,"51,88,286",City proper,800,"6,485", Saudi Arabia
+42,Jeddah,"51,12,018",City proper,"1,230","2,789", Saudi Arabia
+43,Santiago,"50,40,028",Province,"2,030","2,469", Chile
+44,Saint Petersburg,"50,23,313",Federal city,"1,399","3,480", Russia
+45,Qalyubia,"48,11,673",Governorate,"1,001.09","4,806", Egypt
+46,Chengdu,"47,41,929",City core,421,"11,260", China
+47,Alexandria,"46,16,625",Governorate,"2,680","1,723", Egypt
+48,Ankara,"45,50,662",Metropolitan Municipality,"2,516","1,551", Turkey
+49,Chongqing,"45,13,100",Core districts,"1,435","3,145", China
+50,Kolkata,"44,86,679",Municipal Corporation,200.7,"24,252", India
+51,Xi'an,"44,83,426",Core districts,832,"5,388", China
+52,Surat,"44,62,002",Municipal Corporation,326.515,"13,666", India
+53,Johannesburg,"44,34,827",Metropolitan municipality,"1,645","2,696", South Africa
+54,Nanjing,"43,93,857",Core districts,742.85,"5,915", China
+55,Dar es Salaam,"43,64,541",Region,"1,590.50","2,744", Tanzania
+56,Yangon,"43,50,000",City proper,598.75,"6,828", Burma
+57,Abidjan,"42,88,000",Department/District,"2,119","2,024", Ivory Coast
+58,Harbin,"42,80,701",Core districts,"1,718.20","2,491.40", China
+59,Zhengzhou,"41,22,087",Core districts,"1,006","4,097", China
+60,Suzhou,"40,74,000",Core districts,"1,679.20","2,426", China
+61,Sydney,"39,56,000",Urban area/Local government,"2,037","1,942", Australia
+62,New Taipei City,"39,10,086",Special municipality,"2,052.57","1,905", Republic of China (Taiwan)
+63,Los Angeles,"38,19,702",City proper,"1,290","2,940", United States
+64,Melbourne,"37,61,000",Urban area/Local government,"2,543","1,479", Australia
+65,Cape Town,"37,40,026",Metropolitan Municipality,"2,461","1,520", South Africa
+66,Shenyang,"37,17,098",Core districts,166,"22,392", China
+67,Yokohama,"36,80,267",City proper,437.38,"8,414", Japan
+68,Busan,"36,00,381",Metropolitan City,766.12,"4,666", South Korea
+69,Hangzhou,"35,60,391",Core districts,728.19,"4,889", China
+70,Quanzhou,"35,20,846",Core districts,"1,062","3,315", China
+71,Durban,"34,42,361",Metropolitan Municipality,"2,297","1,499", South Africa
+72,Casablanca,"34,27,000",City proper,386,"8,878", Morocco
+73,Algiers,"34,15,811",City proper,363,"9,400", Algeria
+74,Berlin,"34,01,147",City state,892,"3,813", Germany
+75,Nairobi,"33,75,000",City-county,696,"4,849", Kenya
+76,Hefei,"33,52,076",Core districts,838.52,"3,998", China
+77,Kabul,"32,89,000",City proper,275,"11,960", Afghanistan
+78,Pyongyang,"32,55,388",Direct-controlled municipality,"3,194","1,019", North Korea
+79,Madrid,"32,13,271",Municipality,698,"4,604", Spain
+80,Ekurhuleni,"31,78,470",Metropolitan municipality,"1,975","1,609", South Africa
+81,Pune,"31,15,431",Municipal Corporation,450.69,"6,913", India
+82,Addis Ababa,"31,03,673",Region,526.99,"5,889", Ethiopia
+83,Changsha,"30,93,980",Core districts,969,"3,190", China
+84,Jaipur,"30,73,350",Municipal Corporation,485,"6,337", India
+85,Xuzhou,"30,53,778",City proper,393,"7,770", China
+86,Wenzhou,"30,39,500",Core districts,"1,187.88","2,558", China
+,,,,,,
+For other more formats kindly visit www.downloadexcelfiles.com,,,,,,
+,,,,,,
+Original source : en.wikipedia.org/wiki/List_of_cities_proper_by_population,,,,,,
