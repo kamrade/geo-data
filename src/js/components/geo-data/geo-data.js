@@ -3,8 +3,8 @@ import d3 from "d3";
 module.exports = (function(){
 
 
-    var countries;
-    var cities;
+    // var countries;
+    // var cities;
 
     var createMap = function(el) {
         console.log('start creating map');
@@ -28,55 +28,57 @@ module.exports = (function(){
         var path = d3.geo.path()
                         .projection(projection);
 
-        var maxZoomIn = width*2;
-        var maxZoomOut = width/7;
-
-        var zoom = d3.behavior.zoom()
-            .translate( projection.translate() )
-            .scale( projection.scale() )
-            .scaleExtent( [maxZoomOut, maxZoomIn] );
-
-        var zoomIn = function() {
-            var newScale = Math.min( projection.scale() * 2, maxZoomIn );
-            zoomTo(newScale);
-        };
-
-        var zoomOut = function(){
-            var newScale = Math.max( projection.scale() * 2, maxZoomOut );
-            zoomTo(newScale);
-        }
-
-
-        var zoomTo = function(newScale){
-            var t = projection.translate();
-            var s = projection.scale();
-
-            t[0] -= width/2;
-            t[0] *= newScale/s;
-            t[0] += width/2;
-
-            t[1] -= height * 0.55;
-            t[1] *= newScale/s;
-            t[1] += height * 0.55;
-
-            zoom.translate(t).scale(newScale);
-            projection.translate(t).scale(newScale);
-
-            countries.transition()
-                    .ease('linear')
-                    .delay(50)
-                    .duration(500)
-                    .attr('d', path);
-            cities.transition()
-                    .ease('linear')
-                    .duration(500)
-                    .attr('cx', d => {
-                        return projection( [d.longitude, d.latitude])[0];
-                    })
-                    .attr('cy', d => {
-                        return projection( [d.longitude, d.latitude])[1];
-                    })
-        }
+        // var maxZoomIn = width*2;
+        // var maxZoomOut = width/7;
+        //
+        // var zoom = d3.behavior.zoom()
+        //     .translate( projection.translate() )
+        //     .scale( projection.scale() )
+        //     .scaleExtent( [maxZoomOut, maxZoomIn] );
+        //
+        // var zoomIn = function() {
+        //     var newScale = Math.min( projection.scale() * 2, maxZoomIn );
+        //     zoomTo(newScale);
+        // };
+        //
+        // var zoomOut = function(){
+        //     var newScale = Math.max( projection.scale() / 2, maxZoomOut );
+        //     zoomTo(newScale);
+        // }
+        //
+        //
+        // var zoomTo = function(newScale){
+        //     var t = projection.translate();
+        //     var s = projection.scale();
+        //
+        //
+        //     t[0] -= width/2;
+        //     t[0] *= newScale/s;
+        //     t[0] += width/2;
+        //
+        //     t[1] -= height * 0.55;
+        //     t[1] *= newScale/s;
+        //     t[1] += height * 0.55;
+        //
+        //     zoom.translate(t).scale(newScale);
+        //     projection.translate(t).scale(newScale);
+        //
+        //     countries.transition()
+        //             .ease('linear')
+        //             .delay(50)
+        //             .duration(500)
+        //             .attr('d', path);
+        //
+        //     cities.transition()
+        //             .ease('linear')
+        //             .duration(500)
+        //             .attr('cx', d => {
+        //                 return projection( [d.longitude, d.latitude])[0];
+        //             })
+        //             .attr('cy', d => {
+        //                 return projection( [d.longitude, d.latitude])[1];
+        //             });
+        // }
 
         d3.select('#zoomIn')
             .on('click', function() {
@@ -118,7 +120,7 @@ module.exports = (function(){
                     }
                 }
 
-                countries = svg.selectAll('path')
+                svg.selectAll('path')
                     .data(json.features)
                     .enter()
                     .append('path')
@@ -134,6 +136,7 @@ module.exports = (function(){
                     });
 
                 d3.csv('data/biggest_cities.csv', data => {
+
                     svg.selectAll('circle.pop')
                         .data(data)
                         .enter()
@@ -159,7 +162,7 @@ module.exports = (function(){
                         .style('opacity', .2);
 
 
-                    cities = svg.selectAll('circle.area')
+                    svg.selectAll('circle.area')
                         .data(data)
                         .enter()
                         .append('circle')
