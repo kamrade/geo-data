@@ -3,41 +3,66 @@ import d3 from "d3";
 module.exports = (function(){
 
     // global variables
+    var $el, el;
+    var width = 0,
+    height = 0;
+
+    var projection;
+    var color;         // color scale function
+    var maxZoomIn = 0;
+    var maxZoomOut = 0;
+    var path;
+
     var countries;
     var citiesPopulation;
     var citiesArea;
-    var $el, el;
-    var width, height
+
+    // options
+    var transitionDuration = 500;
+    var mapColors = {
+        land_base: '#d3d5d7',
+        land_optional: '#ababab'
+    };
+    var scaling = {
+        baseScale: 0
+    };
 
     // helpers
     var valueFormat = d3.format(',');
 
-    // options
-    var transitionDuration = 500;
-
-    // main function
-    var createMap = function(element) {
+    // INIT MAP ****************************************************************
+    var initMap = function(element) {
         el = element
         $el = document.querySelector(el);
         width = $el.clientWidth;
         height = $el.clientHeight;
+        scaling.baseScale = width/7;
+    }
 
-        var projection = d3.geo.mercator()
-                            .center([0, 40])
-                            .translate( [width/2, height/2] )
-                            .scale([width/7]);
+    // SET INITIAL STATE *******************************************************
+    var setInitialState = function() {
 
-        var color = d3.scale.linear()
-                        .domain([0, 1367485388])
-                        .range(['#d3d5d7', '#ababab']);
+        projection = d3.geo.mercator()
+                        .center([0, 40])
+                        .translate( [width/2, height/2] )
+                        .scale( [ scaling.baseScale ] );
 
+        color = d3.scale.linear()
+                  .range( [ mapColors.land_base, mapColors.land_optional ] );
 
-        var path = d3.geo.path()
-                        .projection(projection);
+        maxZoomIn = width*2;
+        maxZoomOut = width/7;
 
-        var maxZoomIn = width*2;
-        var maxZoomOut = width/7;
-        //
+        path = d3.geo.path().projection(projection);
+    }
+
+    // MAIN FUNCTION ************************************************************
+    var createMap = function(element) {
+
+        initMap(element);
+        setInitialState();
+
+        // zooming
         var zoom = d3.behavior.zoom()
             .translate( projection.translate() )
             .scale( projection.scale() )
@@ -46,45 +71,28 @@ module.exports = (function(){
             .on('zoom', d => {
                 var t = d3.event.translate;
                 var s = d3.event.scale;
-
                 zoom.translate(t);
                 projection.translate(t).scale(s)
-
                 countries.attr('d', path);
-
-                citiesPopulation.attr('cx', d => {
-                    return projection( [d.longitude, d.latitude] )[0];
-                })
-                .attr('cy', d => {
-                    return projection([d.longitude, d.latitude])[1];
-                });
-                // citiesArea
-                citiesArea.attr('cx', d => {
-                    return projection( [d.longitude, d.latitude] )[0];
-                })
-                .attr('cy', d => {
-                    return projection([d.longitude, d.latitude])[1];
-                });
+                citiesPopulation
+                    .attr('cx', d => { return projection( [d.longitude, d.latitude] )[0]; })
+                    .attr('cy', d => { return projection([d.longitude, d.latitude])[1]; });
+                citiesArea
+                    .attr('cx', d => { return projection( [d.longitude, d.latitude] )[0]; })
+                    .attr('cy', d => { return projection([d.longitude, d.latitude])[1]; });
             });
-
-
-
 
         var zoomIn = function() {
             var newScale = Math.min( projection.scale() * 2, maxZoomIn );
             zoomTo(newScale);
         };
-
         var zoomOut = function(){
             var newScale = Math.max( projection.scale() / 2, maxZoomOut );
             zoomTo(newScale);
         }
-
-
         var zoomTo = function(newScale){
             var t = projection.translate();
             var s = projection.scale();
-
 
             t[0] -= width/2;
             t[0] *= newScale/s;
@@ -98,33 +106,21 @@ module.exports = (function(){
             projection.translate(t).scale(newScale);
 
             // transition
-
             countries.transition()
-                    .ease('linear')
-                    .delay(50)
-                    .duration(transitionDuration)
-                    .attr('d', path);
-
+                .ease('linear')
+                .delay(50)
+                .duration(transitionDuration)
+                .attr('d', path);
             citiesPopulation.transition()
-                    .ease('linear')
-                    .duration(transitionDuration)
-                    .attr('cx', d => {
-                        return projection( [d.longitude, d.latitude] )[0];
-                    })
-                    .attr('cy', d => {
-                        return projection( [d.longitude, d.latitude] )[1];
-                    });
-
+                .ease('linear')
+                .duration(transitionDuration)
+                .attr('cx', d => { return projection( [d.longitude, d.latitude] )[0]; })
+                .attr('cy', d => { return projection( [d.longitude, d.latitude] )[1]; });
             citiesArea.transition()
-                    .ease('linear')
-                    .duration(transitionDuration)
-                    .attr('cx', d => {
-                        return projection( [d.longitude, d.latitude] )[0];
-                    })
-                    .attr('cy', d => {
-                        return projection( [d.longitude, d.latitude] )[1];
-                    });
-
+                .ease('linear')
+                .duration(transitionDuration)
+                .attr('cx', d => { return projection( [d.longitude, d.latitude] )[0]; })
+                .attr('cy', d => { return projection( [d.longitude, d.latitude] )[1]; });
         }
 
         d3.select('#zoomIn')
@@ -367,7 +363,6 @@ module.exports = (function(){
 
     return {
         createMap: createMap
-
     };
 
 })();
