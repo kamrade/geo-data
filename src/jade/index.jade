@@ -34,13 +34,17 @@ html(lang="en")
 		link(rel="stylesheet" type="text/css" href="./assets/css/style.css")
 		
 	body
-		h1 Test
-		include ./modules/table.jade
+		h1 Geo Data
+		
 		div#geo-data
 		button#zoomIn ZoomIn
 		button#zoomOut ZoomOut
 		div#presets-container
 			p Zoom To
+			
+		div#tooltip
+			p.name
+			p.value
 
 		script(src="./assets/main.js")
 		

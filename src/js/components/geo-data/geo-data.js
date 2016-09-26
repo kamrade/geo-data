@@ -7,6 +7,8 @@ module.exports = (function(){
     var citiesPopulation;
     var citiesArea;
 
+    var valueFormat = d3.format(',');
+
     var transitionDuration = 500;
 
     var createMap = function(el) {
@@ -205,37 +207,14 @@ module.exports = (function(){
                     .attr('cy', d => {
                         return projection([d.longitude, d.latitude])[1];
                     });
-
-
-
             })
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
         var svg = d3.select(el)
                     .append('svg')
                     .attr('width', width)
                     .attr('height', height);
 
-        d3.csv('data/countries_coma.csv', function(data){
+        d3.csv('data/countries_coma.csv', function(data){ // страны, территория, население
 
             color.domain([
                 0,
@@ -244,7 +223,7 @@ module.exports = (function(){
                 })
             ]);
 
-            d3.json('/data/geo.json', function(json){
+            d3.json('data/geo.json', function(json){ // geo shapes
 
                 for (var i = 0, l = data.length; i < l; i++) {
 
@@ -284,7 +263,32 @@ module.exports = (function(){
                         } else {
                             return '#fff';
                         }
-                    });
+                    })
+
+                    // .on('mouseover', d => {
+                    //     d3.select(this)
+                    //     var x = d3.event.pageX;
+                    //     var y = d3.event.pageY - 40;
+                    //
+                    //     d3.select('#tooltip .name')
+                    //         .text(d.properties.name);
+                    //
+                    //     // DON'T FORGET TO ADD VALUE!
+                    //     d3.select('#tooltip .value')
+                    //         .text( valueFormat(d.properties.population) );
+                    //
+                    //     d3.select('#tooltip')
+                    //         .style('left', x + 'px')
+                    //         .style('top', y + 'px')
+                    //         .style('opacity', 1);
+                    //
+                    // })
+                    // .on('mouseout', function() {
+                    //     d3.select('#tooltip')
+                    //         .style('opacity', 0);
+                    //     d3.select('#tooltip .value')
+                    //         .text("");
+                    // });
 
                 d3.csv('data/biggest_cities.csv', data => {
 
@@ -302,7 +306,7 @@ module.exports = (function(){
                         })
                         .attr('r', 0)
                         .attr('r', d => {
-                             var population = d.Population.replace(/\,/g, "");
+                            var population = d.Population.replace(/\,/g, "");
                             return Math.sqrt((+population / width) * 0.05);
                         })
                         .style('opacity', .2)
@@ -327,6 +331,25 @@ module.exports = (function(){
                             return Math.sqrt((+Area / width * 20) );
                         })
                         .style('opacity', .8)
+                        .on('mouseover', function(d){
+                            var x = d3.event.pageX;
+                            var y = d3.event.pageY;
+
+                            d3.select('#tooltip .name')
+                                .text(d.name);
+
+                            d3.select('#tooltip .value')
+                                .text( d.Area );
+
+                            d3.select('#tooltip')
+                                .style('left', x + 'px')
+                                .style('top', (y - 24) + 'px')
+                                .style('opacity', 1);
+                        })
+                        .on('mouseout', function(){
+                            d3.select('#tooltip')
+                                .style('opacity', 0);
+                        })
                         .call(zoom);
 
                 });
