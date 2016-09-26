@@ -1,0 +1,205 @@
+Country,countryCode,GDP
+Afghanistan,AFG,62318
+Albania,ALB,3265
+Algeria,DZA,578651
+American Samoa,ASM,0
+Andorra,AND,0
+Angola,AGO,184438
+Antigua and Barbuda,ATG,2097
+Argentina,ARG,971967
+Armenia,ARM,25323
+Aruba,ABW,0
+Australia,AUS,1138085
+Austria,AUT,404293
+Azerbaijan,AZE,169445
+Bahamas,BHS,9166
+Bahrain,BHR,64799
+Bangladesh,BGD,576547
+Barbados,BRB,4636
+Belarus,BLR,167692
+Belgium,BEL,494121
+Belize,BLZ,3049
+Benin,BEN,22948
+Bermuda,BMU,0
+Bhutan,BTN,6385
+Bolivia,BOL,74391
+Bosnia and Herzegovina,BIH,40532
+Botswana,BWA,34844
+Brazil,BRA,3101247
+Brunei,BRN,33219
+Bulgaria,BGR,136855
+Burkina Faso,BFA,30878
+Burundi,BDI,7711
+Cabo Verde,CPV,3423
+Cambodia,KHM,54205
+Cameroon,CMR,72644
+Canada,CAN,1631943
+Cayman Islands,CYM,0
+Central African Republic,CAF,3018
+Chad,TCD,30468
+Chile,CHL,422422
+China,CHN,20853331
+Colombia,COL,667443
+Comoros,COM,1214
+Costa Rica,CRI,74888
+Croatia,HRV,91096
+Cuba,CUB,0
+Curacao,CUW,0
+Cyprus,CYP,28058
+Czech Republic,CZE,332477
+Democratic Republic of the Congo,COD,62873
+Denmark,DNK,258702
+Djibouti,DJI,3094
+Dominican Republic,DOM,149692
+Ecuador,ECU,183358
+Egypt,EGY,1092634
+El Salvador,SLV,52947
+Equatorial Guinea,GQ,25386
+Eritrea,ERI,8713
+Estonia,EST,37549
+Ethiopia,ETH,161634
+Fiji,FJI,8048
+Finland,FIN,224999
+France,FRA,2703378
+French Polynesia,PYF,0
+Gabon,GAB,34575
+Gambia,GMB,3261
+Georgia,GEO,35604
+Germany,DEU,3934664
+Ghana,GHA,114701
+Greece,GRC,285976
+Greenland,GRL,0
+Grenada,GRD,1401
+Guam,GUM,0
+Guatemala,GTM,125862
+Guinea,GIN,14982
+Guinea-Bissau,GNB,268
+Guyana,GUY,5759
+Haiti,HTI,18745
+Honduras,HND,41057
+Hong Kong,HKG,414566
+Hungary,HUN,258444
+Iceland,ISL,15154
+India,IND,8642758
+Indonesia,IDN,3010746
+Iran,IRN,1439295
+Iraq,IRQ,544096
+Ireland,IRL,257417
+Isle of Man,IMN,0
+Israel,ISR,281939
+Italy,ITA,2213909
+Ivory Coast,CIV,78621
+Jamaica,JAM,24647
+Japan,JPN,4901102
+Jordan,JOR,82725
+Kazakhstan,KAZ,42912
+Kenya,KEN,141861
+Kiribati,KIR,203
+Kosovo,KSV,17391
+Kuwait,KWT,288382
+Kyrgyzstan,KGZ,20095
+Laos,LAO,37322
+Latvia,LVA,49081
+Lebanon,LBN,83057
+Lesotho,LSO,577
+Liberia,LBR,3749
+Libya,LBY,92608
+Liechtenstein,LIE,0
+Lithuania,LTU,82355
+Luxembourg,LUX,5573
+Macau,MAC,0
+Macedonia,MKD,29037
+Madagascar,MDG,35437
+Malawi,MWI,20359
+Malaysia,MYS,803031
+Maldives,MDV,5191
+Mali,MLI,35832
+Malta,MLT,15382
+Marshall Islands,MHL,175
+Mauritania,MRT,16289
+Mauritius,MUS,24566
+Mexico,MEX,2227176
+Moldova,MDA,17793
+Monaco,MCO,0
+Mongolia,MNG,36068
+Montenegro,MNE,10035
+Morocco,MAR,287533
+Mozambique,MOZ,33187
+Myanmar,MMR,283532
+Namibia,NAM,25341
+Nepal,NPL,70091
+Netherlands,NLD,815646
+New Caledonia,NCL,0
+New Zealand,NZL,168187
+Nicaragua,NIC,31333
+Niger,NER,19053
+Nigeria,NGA,1091700
+North Korea,PRK,0
+Northern Mariana Islands,MNP,0
+Norway,NOR,356209
+Oman,OMN,171363
+Pakistan,PAK,98238
+Palau,PLW,272
+Palestine,PS,0
+Panama,PAN,87196
+Papua New Guinea,PNG,18595
+Paraguay,PRY,60977
+Peru,PER,389149
+Philippines,PHL,831477
+Poland,POL,1005449
+Portugal,PRT,289791
+Puerto Rico,PRI,0
+Qatar,QAT,319818
+Republic of the Congo,COG,29362
+Romania,ROU,413846
+Russia,RUS,3684643
+Rwanda,RWA,18901
+Samoa,WSM,1000
+San Marino,SMR,1982
+Sao Tome and Principe,STP,0
+Saudi Arabia,SAU,1720027
+Senegal,SEN,36687
+Serbia,SRB,97502
+Seychelles,SYC,2417
+Sierra Leone,SLE,9966
+Singapore,SGP,471877
+Slovakia,SVK,160998
+Slovenia,SVN,63964
+Solomon Islands,SLB,1146
+Somalia,SOM,0
+South Africa,ZAF,723518
+South Korea,KOR,1848518
+South Sudan,SSD,23691
+Spain,ESP,1615074
+Sri Lanka,LKA,223024
+Sudan,SDN,166957
+Suriname,SUR,909
+Swaziland,SWZ,10845
+Sweden,SWE,473413
+Switzerland,CHE,482347
+Syria,SYR,121397
+Taiwan,TWN,1099030
+Tajikistan,TJK,23306
+Tanzania,TZA,138461
+Thailand,THA,1108111
+Timor-Leste,TLS,657
+Togo,TGO,10849
+Tonga,TON,526
+Trinidad and Tobago,TTO,44306
+Tunisia,TUN,126968
+Turkey,TUR,1665332
+Turkmenistan,TKM,886
+Tuvalu,TUV,37
+Uganda,UGA,79884
+Ukraine,UKR,339481
+United Arab Emirates,ARE,647823
+United Kingdom,GBR,2756748
+United States,USA,18558129
+Uruguay,URY,73463
+Uzbekistan,UZB,187947
+Vanuatu,VUT,685
+Venezuela,VEN,515745
+Vietnam,VNM,552298
+Yemen,YEM,75535
+Zambia,ZMB,62709
+Zimbabwe,ZWE,28102
