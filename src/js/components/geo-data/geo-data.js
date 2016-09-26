@@ -2,20 +2,25 @@ import d3 from "d3";
 
 module.exports = (function(){
 
-
+    // global variables
     var countries;
     var citiesPopulation;
     var citiesArea;
+    var $el, el;
+    var width, height
 
+    // helpers
     var valueFormat = d3.format(',');
 
+    // options
     var transitionDuration = 500;
 
-    var createMap = function(el) {
-        console.log('start creating map');
-        var $el = document.querySelector(el);
-        var width = $el.clientWidth;
-        var height = $el.clientHeight;
+    // main function
+    var createMap = function(element) {
+        el = element
+        $el = document.querySelector(el);
+        width = $el.clientWidth;
+        height = $el.clientHeight;
 
         var projection = d3.geo.mercator()
                             .center([0, 40])
@@ -338,8 +343,10 @@ module.exports = (function(){
                             d3.select('#tooltip .name')
                                 .text(d.name);
 
-                            d3.select('#tooltip .value')
+                            d3.select('#tooltip .value-area')
                                 .text( d.Area );
+                            d3.select('#tooltip .value-population')
+                                .text( d.Population );
 
                             d3.select('#tooltip')
                                 .style('left', x + 'px')
