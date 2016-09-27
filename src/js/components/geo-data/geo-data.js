@@ -12,11 +12,17 @@ module.exports = (function(){
     var path;           // функция отрисовки path. отрисовывает все path согласно данным
     var zoom;           // функция zoom-ирования - zoom-listener (scale, translate)
     var svg;            // root-объект svg
+    var graticule;
+    var grid;
 
     var maxValue = 0;
     var countries;
     var citiesPopulation;
     var citiesArea;
+    var previousCord = {
+        x: 0,
+        y: 0
+    };
 
     // options *********************************************************************
     var transitionDuration = 500;
@@ -39,7 +45,7 @@ module.exports = (function(){
         $el = document.querySelector(el);
         width = $el.clientWidth;
         height = $el.clientHeight;
-        scaling.baseScale = width/7;
+        scaling.baseScale = width/6;
     };
 
     // SET INITIAL STATE *******************************************************
@@ -51,60 +57,81 @@ module.exports = (function(){
         color = d3.scale.linear()
                   .range( [ mapColors.land_base, mapColors.land_optional ] );
         maxZoomIn = width*2;
-        maxZoomOut = width/7;
+        maxZoomOut = scaling.baseScale; // width/6
         path = d3.geo.path().projection(projection);
+        graticule = d3.geo.graticule();
+
 
         zoom = d3.behavior.zoom()
             .translate( projection.translate() )
             .scale( projection.scale() )
             .scaleExtent( [maxZoomOut, maxZoomIn] )
             .on('zoom', function(d) {
-
-                var posX = d3.event.translate[0];
-                var posY = d3.event.translate[1];
-                console.log(`Real position X = ${posX}`);
-                console.log(`Real position Y = ${posY}`);
-                // console.log(`Scaled position X = ${posX}`);
-                console.log(d3.event.scale);
-                console.log(`width = ${width}`);
-                console.log(`height = ${height}`);
-
-                // if(posX < 0) {
-                //     d3.event.translate[0] = 0;
-                // }
-                // if(posX > width) {
-                //     d3.event.translate[0] = width;
-                // }
-                // if (posY < 0) {
-                //     d3.event.translate[1] = 0;
-                // }
-                // if (posY > height){
-                //     d3.event.translate[1] = height;
-                // }
-
-                var t = d3.event.translate;
-                var s = d3.event.scale;
-                zoom.translate(t);
-                projection.translate(t).scale(s);
-                countries.attr('d', path);
-                citiesPopulation
-                    .attr('cx', function(d) { return projection( [d.longitude, d.latitude] )[0]; })
-                    .attr('cy', function(d) { return projection([d.longitude, d.latitude])[1]; });
-                citiesArea
-                    .attr('cx', function(d) { return projection( [d.longitude, d.latitude] )[0]; })
-                    .attr('cy', function(d) { return projection([d.longitude, d.latitude])[1]; });
-
+                interactMap(d);
             });
+
         svg = d3.select(el)
             .append('svg')
             .attr('width', width)
             .attr('height', height);
     };
 
+    // work with global variables countries, citiesPopulation, citiesArea
+    var interactMap = function(d) {
+        var t = d3.event.translate;
+        var s = d3.event.scale;
+        zoom.translate(t);
+        projection.translate(t).scale(s);
+        countries.attr('d', path);
+        citiesPopulation
+            .attr('cx', function(d) { return projection( [d.longitude, d.latitude] )[0]; })
+            .attr('cy', function(d) { return projection([d.longitude, d.latitude])[1]; });
+        citiesArea
+            .attr('cx', function(d) { return projection( [d.longitude, d.latitude] )[0]; })
+            .attr('cy', function(d) { return projection([d.longitude, d.latitude])[1]; });
+        grid.attr('d', path);
+    }
+
     // MAIN FUNCTION ************************************************************
     var createMap = function(element) {
         initMap(element);
         setInitialState();
+
+        var reset = d3.select('button#reset')
+            .on('click', function(e){
+                var scale = maxZoomOut;
+                var x = width / 2;
+                var y = height / 2;
+                projection.scale(scale).translate([x,y]);
+                zoom.scale( projection.scale() ).translate( projection.translate() );
+                countries.transition()
+                    .ease('linear')
+                    .delay(50)
+                    .duration(500)
+                    .attr('d', path);
+
+                citiesPopulation.transition()
+                    .ease('linear')
+                    .duration(500)
+                    .attr('cx', function(d){
+                        return projection([d.longitude, d.latitude])[0];
+                    })
+                    .attr('cy', function(d){
+                        return projection([d.longitude, d.latitude])[1];
+                    });
+
+                    citiesArea.transition()
+                        .ease('linear')
+                        .duration(500)
+                        .attr('cx', function(d){
+                            return projection([d.longitude, d.latitude])[0];
+                        })
+                        .attr('cy', function(d){
+                            return projection([d.longitude, d.latitude])[1];
+                        });
+
+
+            })
 
         // работа с данными
         // страны
@@ -152,6 +179,11 @@ module.exports = (function(){
                             return '#fff';
                         }
                     })
+
+                grid = svg.append("path")
+                    .datum(graticule)
+                    .attr("class", "graticule")
+                    .attr("d", path);
 
                 d3.csv('data/biggest_cities.csv', function(data) {
 
