@@ -15,7 +15,7 @@ body
 	overflow: hidden
 
 .country
-	opacity: .9
+	opacity: .5
 	stroke: #fff
 	stroke-width: 1
 	stroke-linejoin: round
@@ -44,6 +44,7 @@ body
 	padding: 8px
 	width: auto
 	min-width: 16px
+	max-width: 320px
 	height: auto
 	color: #555
 	font-size: 12px
@@ -51,9 +52,24 @@ body
 	background-color: rgba(255,255,255,0.75)
 	opacity: 0
 	pointer-events: none
+	border-radius: 8px
+	transition: opacity .15s ease
 
 	p
 		margin: 0
 
 		&.value
 			font-weight: bold
+
+	&:after
+		content: ''
+		display: block
+		position: absolute
+		width: 0
+		height: 0
+		left: 50%
+		transform: translateX(-50%)
+		top: 100%
+		border-left: 8px solid transparent
+		border-right: 8px solid transparent
+		border-top: 10px solid rgba(255,255,255,0.75)

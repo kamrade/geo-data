@@ -13,6 +13,7 @@ module.exports = (function(){
     var zoom;           // функция zoom-ирования - zoom-listener (scale, translate)
     var svg;            // root-объект svg
 
+    var maxValue = 0;
     var countries;
     var citiesPopulation;
     var citiesArea;
@@ -24,7 +25,7 @@ module.exports = (function(){
         land_optional: '#ababab'
     };
     var scaling = {
-        baseScale: 0
+        baseScale: 0 // = width/7;
     };
     var maxZoomIn = 0;
     var maxZoomOut = 0;
@@ -52,23 +53,47 @@ module.exports = (function(){
         maxZoomIn = width*2;
         maxZoomOut = width/7;
         path = d3.geo.path().projection(projection);
+
         zoom = d3.behavior.zoom()
             .translate( projection.translate() )
             .scale( projection.scale() )
             .scaleExtent( [maxZoomOut, maxZoomIn] )
-            .on('zoom', d => {
-                // console.log( d3.event );
+            .on('zoom', function(d) {
+
+                var posX = d3.event.translate[0];
+                var posY = d3.event.translate[1];
+                console.log(`Real position X = ${posX}`);
+                console.log(`Real position Y = ${posY}`);
+                // console.log(`Scaled position X = ${posX}`);
+                console.log(d3.event.scale);
+                console.log(`width = ${width}`);
+                console.log(`height = ${height}`);
+
+                // if(posX < 0) {
+                //     d3.event.translate[0] = 0;
+                // }
+                // if(posX > width) {
+                //     d3.event.translate[0] = width;
+                // }
+                // if (posY < 0) {
+                //     d3.event.translate[1] = 0;
+                // }
+                // if (posY > height){
+                //     d3.event.translate[1] = height;
+                // }
+
                 var t = d3.event.translate;
                 var s = d3.event.scale;
                 zoom.translate(t);
-                projection.translate(t).scale(s)
+                projection.translate(t).scale(s);
                 countries.attr('d', path);
                 citiesPopulation
-                    .attr('cx', d => { return projection( [d.longitude, d.latitude] )[0]; })
-                    .attr('cy', d => { return projection([d.longitude, d.latitude])[1]; });
+                    .attr('cx', function(d) { return projection( [d.longitude, d.latitude] )[0]; })
+                    .attr('cy', function(d) { return projection([d.longitude, d.latitude])[1]; });
                 citiesArea
-                    .attr('cx', d => { return projection( [d.longitude, d.latitude] )[0]; })
-                    .attr('cy', d => { return projection([d.longitude, d.latitude])[1]; });
+                    .attr('cx', function(d) { return projection( [d.longitude, d.latitude] )[0]; })
+                    .attr('cy', function(d) { return projection([d.longitude, d.latitude])[1]; });
+
             });
         svg = d3.select(el)
             .append('svg')
@@ -84,8 +109,8 @@ module.exports = (function(){
         // работа с данными
         // страны
         d3.csv('data/countries-GDP.csv', function(data){ // страны, GDP
-            color.domain([ 0,    d3.max(data, d => { return +d.GDP; })    ]);
-
+            maxValue = d3.max(data, function(d) { return +d.GDP; })
+            color.domain([ 0, maxValue ]);
             // переносим все нужные данные в объект json
             // совмещаем две таблицы countries-GDP и просто geo.json
             // в geo.json - это большой файл с очертаниями стран и континентов.
@@ -119,7 +144,7 @@ module.exports = (function(){
                     .append('path')
                     .classed("country", true)
                     .attr('d', path)
-                    .style('fill', d => {
+                    .style('fill', function(d) {
                         var value = d.properties.population;
                         if(value){
                             return color(value);
@@ -128,7 +153,7 @@ module.exports = (function(){
                         }
                     })
 
-                d3.csv('data/biggest_cities.csv', data => {
+                d3.csv('data/biggest_cities.csv', function(data) {
 
                     citiesPopulation = svg.selectAll('circle.pop')
                         .data(data)
@@ -136,14 +161,14 @@ module.exports = (function(){
                         .append('circle')
                         .style('fill', '#e74630')
                         .classed('pop', true)
-                        .attr('cx', d => {
+                        .attr('cx', function(d) {
                             return projection([d.longitude, d.latitude])[0];
                         })
-                        .attr('cy', d => {
+                        .attr('cy', function(d) {
                             return projection([d.longitude, d.latitude])[1];
                         })
                         .attr('r', 0)
-                        .attr('r', d => {
+                        .attr('r', function(d) {
                             var population = d.Population.replace(/\,/g, "");
                             return Math.sqrt((+population / width) * 0.05);
                         })
@@ -157,41 +182,48 @@ module.exports = (function(){
                         .append('circle')
                         .style('fill', '#5b5388')
                         .classed('area', true)
-                        .attr('cx', d => {
+                        .attr('cx', function(d) {
                             return projection([d.longitude, d.latitude])[0];
                         })
-                        .attr('cy', d => {
+                        .attr('cy', function(d) {
                             return projection([d.longitude, d.latitude])[1];
                         })
                         .attr('r', 0)
-                        .attr('r', d => {
+                        .attr('r', function(d) {
                              var Area = d.Area.replace(/\,/g, "");
-                            return Math.sqrt((+Area / width * 20) );
+                            return Math.sqrt((+Area / width * 30) );
                         })
                         .style('opacity', .8)
-                        .on('mouseover', function(d){
-                            var x = d3.event.pageX;
-                            var y = d3.event.pageY;
 
+                        .on('mouseover', function(d){
+                            // var x = d3.event.pageX;
+                            // var y = d3.event.pageY;
+                            var x = this.getAttribute("cx");
+                            var y = this.getAttribute("cy");
+                            var r = this.getAttribute("r");
                             d3.select('#tooltip .name')
                                 .text(d.name);
-
                             d3.select('#tooltip .value-area')
                                 .text( d.Area );
                             d3.select('#tooltip .value-population')
                                 .text( d.Population );
-
                             d3.select('#tooltip')
-                                .style('left', x + 'px')
-                                .style('top', (y - 24) + 'px')
+                                .style('left', function(){
+                                    var positionX = x - this.clientWidth/2 + r/4;
+                                    return positionX + 'px';
+                                })
+                                .style('top', function() {
+                                    var positionY = y - this.clientHeight + Math.ceil(r);
+                                    return positionY + 'px';
+                                })
                                 .style('opacity', 1);
                         })
+
                         .on('mouseout', function(){
                             d3.select('#tooltip')
                                 .style('opacity', 0);
                         })
                         .call(zoom);
-
                 });
             });
         });
