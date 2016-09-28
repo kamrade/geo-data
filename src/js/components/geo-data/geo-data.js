@@ -1,47 +1,47 @@
 import d3 from "d3";
 import classie from "../../classie"
 
+// global variables
+var $el, el;
+var width = 0,
+height = 0;
+var tooltip = d3.select('#tooltip');
+
+var projection;     // d3.geo.mercator - функция отображения карты (развернутая сфера)
+var color;          // color scale function
+var path;           // функция отрисовки path. отрисовывает все path согласно данным
+var zoom;           // функция zoom-ирования - zoom-listener (scale, translate)
+var svg;            // root-объект svg
+var graticule;
+var grid;
+
+var maxValue = 0;
+var countriesGroup;
+var countries;
+var citiesPopulation;
+var citiesArea;
+var previousCord = {
+    x: 0,
+    y: 0
+};
+
+// options
+var transitionDuration = 500;
+var mapColors = {
+    land_base: '#d3d5d7',
+    land_optional: '#ababab'
+};
+var scaling = {
+    baseScale: 0 // = width/7;
+};
+var maxZoomIn = 0;
+var maxZoomOut = 0;
+
+// helpers
+var valueFormat = d3.format(',');
+
+
 module.exports = (function(){
-
-    // global variables
-    var $el, el;
-    var width = 0,
-    height = 0;
-    var tooltip = d3.select('#tooltip');
-
-    var projection;     // d3.geo.mercator - функция отображения карты (развернутая сфера)
-    var color;          // color scale function
-    var path;           // функция отрисовки path. отрисовывает все path согласно данным
-    var zoom;           // функция zoom-ирования - zoom-listener (scale, translate)
-    var svg;            // root-объект svg
-    var graticule;
-    var grid;
-
-    var maxValue = 0;
-    var countriesGroup;
-    var countries;
-    var citiesPopulation;
-    var citiesArea;
-    var previousCord = {
-        x: 0,
-        y: 0
-    };
-
-    // options *********************************************************************
-    var transitionDuration = 500;
-    var mapColors = {
-        land_base: '#d3d5d7',
-        land_optional: '#ababab'
-    };
-    var scaling = {
-        baseScale: 0 // = width/7;
-    };
-    var maxZoomIn = 0;
-    var maxZoomOut = 0;
-
-    // helpers
-    var valueFormat = d3.format(',');
-
     // INIT MAP ****************************************************************
     var initMap = function(element) {
         el = element
@@ -69,7 +69,7 @@ module.exports = (function(){
             .translate( projection.translate() )
             .scale( projection.scale() )
             .scaleExtent( [maxZoomOut, maxZoomIn] )
-            .on('zoom', interactMap );
+            .on('zoom', interactMap ); // MAGIC!
 
         svg = d3.select(el)
             .append('svg')
@@ -104,11 +104,9 @@ module.exports = (function(){
     }
 
     var mapBehavior = function() {
-        
         countriesGroup.call(zoom);
-
         // работа с данными
-        // страны
+        // countries
         d3.csv('data/countries-GDP.csv', function(data){ // страны, GDP
             maxValue = d3.max(data, function(d) { return +d.GDP; })
             color.domain([ 0, maxValue ]);
@@ -116,6 +114,7 @@ module.exports = (function(){
             // совмещаем две таблицы countries-GDP и просто geo.json
             // в geo.json - это большой файл с очертаниями стран и континентов.
             d3.json('data/geo.json', function(json) {
+                console.log(json);
                 for (var i = 0, l = data.length; i < l; i++) {
                     var dataCountryCode = data[i].countryCode;
                     var dataValue = +data[i].GDP;
@@ -128,7 +127,6 @@ module.exports = (function(){
                     }
                 }
 
-                // страны
                 countries = countriesGroup.selectAll('path')
                     .data(json.features)
                     .enter()
@@ -144,35 +142,29 @@ module.exports = (function(){
                         }
                     })
 
-                // сетка
+                // grid
                 grid = svg.append("path")
                     .datum(graticule)
                     .attr("class", "graticule")
                     .attr("d", path);
 
+                // cities
                 d3.csv('data/biggest_cities.csv', function(data) {
-
                     citiesPopulation = svg.selectAll('circle.pop')
                         .data(data)
                         .enter()
                         .append('circle')
                         .style('fill', '#e74630')
                         .classed('pop', true)
-                        .attr('cx', function(d) {
-                            return projection([d.longitude, d.latitude])[0];
-                        })
-                        .attr('cy', function(d) {
-                            return projection([d.longitude, d.latitude])[1];
-                        })
+                        .attr('cx', function(d) { return projection([d.longitude, d.latitude])[0]; })
+                        .attr('cy', function(d) { return projection([d.longitude, d.latitude])[1]; })
                         .attr('r', 0)
                         .attr('r', function(d) {
                             var population = d.Population.replace(/\,/g, "");
                             return Math.sqrt((+population / width) * 0.05);
                         })
                         .style('opacity', .2)
-                        .call(zoom)
-                        ;
-
+                        .call(zoom);
 
                     citiesArea = svg.selectAll('circle.area')
                         .data(data)
@@ -180,12 +172,8 @@ module.exports = (function(){
                         .append('circle')
                         .style('fill', '#5b5388')
                         .classed('area', true)
-                        .attr('cx', function(d) {
-                            return projection([d.longitude, d.latitude])[0];
-                        })
-                        .attr('cy', function(d) {
-                            return projection([d.longitude, d.latitude])[1];
-                        })
+                        .attr('cx', function(d) { return projection([d.longitude, d.latitude])[0]; })
+                        .attr('cy', function(d) { return projection([d.longitude, d.latitude])[1]; })
                         .attr('r', 0)
                         .attr('r', function(d) {
                              var Area = d.Area.replace(/\,/g, "");
@@ -197,12 +185,9 @@ module.exports = (function(){
                             var x = this.getAttribute("cx");
                             var y = this.getAttribute("cy");
                             var r = this.getAttribute("r");
-                            d3.select('#tooltip .name')
-                                .text(d.name);
-                            d3.select('#tooltip .value-area')
-                                .text( d.Area );
-                            d3.select('#tooltip .value-population')
-                                .text( d.Population );
+                            d3.select('#tooltip .name').text(d.name);
+                            d3.select('#tooltip .value-area').text( d.Area );
+                            d3.select('#tooltip .value-population').text( d.Population );
                             tooltip
                                 .style('left', function(){
                                     var positionX = x - this.clientWidth/2 + r/4;
@@ -218,73 +203,103 @@ module.exports = (function(){
                         .call(zoom);
                 });
             });
-        });        
+        });
     };
 
     // map state
+    var zoomTo = function(newScale){
+        var t = projection.translate();
+        var s = projection.scale();
+
+        t[0] -= width/2;
+        t[0] *= newScale/s;
+        t[0] += width/2;
+
+        t[1] -= height * 0.55;
+        t[1] *= newScale/s;
+        t[1] += height * 0.55;
+
+        zoom.translate(t).scale(newScale);
+        projection.translate(t).scale(newScale);
+
+        countries.transition()
+            .ease('linear')
+            .delay(50)
+            .duration(transitionDuration)
+            .attr('d', path);
+
+        citiesPopulation.transition()
+            .ease('linear')
+            .duration(transitionDuration)
+            .attr('cx', d => { return projection( [d.longitude, d.latitude] )[0]; })
+            .attr('cy', d => { return projection( [d.longitude, d.latitude] )[1]; });
+        citiesArea.transition()
+            .ease('linear')
+            .duration(transitionDuration)
+            .attr('cx', d => { return projection( [d.longitude, d.latitude] )[0]; })
+            .attr('cy', d => { return projection( [d.longitude, d.latitude] )[1]; });
+    }
+
+    var zoomToTransition = function(newScale, x, y){
+        projection.scale(newScale).translate([x,y]);
+        zoomTo(newScale);
+    };
+
+    var europe = d3.select('#zoom-to-europe')
+        .on('click', function(){
+            zoomToTransition(width*0.6, width / 3, height*0.8)
+        });
+
     var resetMap = function(){
         var scale = maxZoomOut;
         var x = width / 2;
         var y = height / 2;
         projection.scale(scale).translate([x,y]);
-        zoom.scale( projection.scale() ).translate( projection.translate() );
-        countries.transition()
-            .ease('linear')
-            .delay(50)
-            .duration(100)
-            .attr('d', path);
+        zoomTo(scale);
+    };
 
-        citiesPopulation.transition()
-            .ease('linear')
-            .duration(100)
-            .attr('cx', function(d){
-                return projection([d.longitude, d.latitude])[0];
-            })
-            .attr('cy', function(d){
-                return projection([d.longitude, d.latitude])[1];
-            });
+    var zoomIn = function(){
+        var newScale = Math.min( projection.scale() * 1.2, maxZoomIn );
+        zoomTo(newScale);
+    };
 
-        citiesArea.transition()
-            .ease('linear')
-            .duration(100)
-            .attr('cx', function(d){
-                return projection([d.longitude, d.latitude])[0];
-            })
-            .attr('cy', function(d){
-                return projection([d.longitude, d.latitude])[1];
-            });
+    var zoomOut = function(){
+        var newScale = Math.max( projection.scale() / 1.2, maxZoomOut );
+        zoomTo(newScale);
     };
 
     var activateMap = function(){
         classie.remove(document.querySelector("#overlay"), 'active');
-    }
+    };
 
     var deactivateMap = function(){
         classie.add(document.querySelector("#overlay"), 'active');
         resetMap();
-    }
+    };
 
     var tooltipShow = function() {
         tooltip.style('opacity', 1);
     };
 
     var tooltipHide = function() {
-         tooltip.style('opacity', 0);
+        tooltip.style('opacity', 0);
     };
-    
+
     // MAIN FUNCTION
     var createMap = function(element) {
         initMap(element);
         setInitialState();
         mapBehavior();
     };
-    
+
     return {
         createMap: createMap,
         tooltipHide: tooltipHide,
         activateMap: activateMap,
         deactivateMap: deactivateMap,
-        resetMap: resetMap
+        resetMap: resetMap,
+        zoomIn: zoomIn,
+        zoomOut: zoomOut
     };
 
 })();

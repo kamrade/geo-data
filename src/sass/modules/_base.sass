@@ -9,11 +9,14 @@ body
 	background-color: $c_bg
 	color: $c_txt
 
+
+// GEO DATA
 #geo-data
 	height: 920px
 	border: 1px solid #ccc
 	overflow: hidden
 	position: relative
+	z-index: 10
 
 .country
 	opacity: .5
@@ -84,12 +87,15 @@ body
 
 .long
 	height: 1200px
-	border-top: 5px solid red
+	border-top: 5px solid #333
 
 #overlay.active
 	position: absolute
+	z-index: 20
 	left: 0
 	top: 0
 	bottom: 0
 	right: 0
-	background-color: rgba(#fff, 0.5)
+	background-color: rgba(#fff, 0.1)
+	border: 3px solid red
+	box-sizing: border-box
