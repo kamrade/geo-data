@@ -56,7 +56,7 @@ module.exports = (function(){
                         .scale( [ scaling.baseScale ] );
         color = d3.scale.linear()
                   .range( [ mapColors.land_base, mapColors.land_optional ] );
-        maxZoomIn = width*2;
+        maxZoomIn = width/2;
         maxZoomOut = scaling.baseScale; // width/6
         path = d3.geo.path().projection(projection);
         graticule = d3.geo.graticule();
@@ -66,6 +66,7 @@ module.exports = (function(){
             .translate( projection.translate() )
             .scale( projection.scale() )
             .scaleExtent( [maxZoomOut, maxZoomIn] )
+            
             .on('zoom', function(d) {
                 interactMap(d);
             });
@@ -80,8 +81,15 @@ module.exports = (function(){
     var interactMap = function(d) {
         var t = d3.event.translate;
         var s = d3.event.scale;
+        
+        if(s == maxZoomOut || s < maxZoomOut) {
+            console.log('max');
+        }
+
         zoom.translate(t);
-        projection.translate(t).scale(s);
+        projection.translate(t)
+        .scale(s)
+        ;
         countries.attr('d', path);
         citiesPopulation
             .attr('cx', function(d) { return projection( [d.longitude, d.latitude] )[0]; })
@@ -228,8 +236,6 @@ module.exports = (function(){
                         .style('opacity', .8)
 
                         .on('mouseover', function(d){
-                            // var x = d3.event.pageX;
-                            // var y = d3.event.pageY;
                             var x = this.getAttribute("cx");
                             var y = this.getAttribute("cy");
                             var r = this.getAttribute("r");
@@ -261,8 +267,17 @@ module.exports = (function(){
         });
     };
 
+    var tooltipShow = function() {
+
+    };
+
+    var tooltipHide = function() {
+
+    };
+
     return {
-        createMap: createMap
+        createMap: createMap,
+        tooltipHide: tooltipHide
     };
 
 })();
