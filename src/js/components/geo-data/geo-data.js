@@ -6,6 +6,7 @@ var $el, el;
 var width = 0,
 height = 0;
 var tooltip = d3.select('#tooltip');
+var overlay = document.querySelector("#overlay");
 
 var projection;     // d3.geo.mercator - функция отображения карты (развернутая сфера)
 var color;          // color scale function
@@ -104,7 +105,7 @@ module.exports = (function(){
     }
 
     var mapBehavior = function() {
-        countriesGroup.call(zoom);
+        countriesGroup.call(zoom).on('dblclick.zoom', null);
         // работа с данными
         // countries
         d3.csv('data/countries-GDP.csv', function(data){ // страны, GDP
@@ -164,7 +165,7 @@ module.exports = (function(){
                             return Math.sqrt((+population / width) * 0.05);
                         })
                         .style('opacity', .2)
-                        .call(zoom);
+                        .call(zoom).on('dblclick.zoom', null);
 
                     citiesArea = svg.selectAll('circle.area')
                         .data(data)
@@ -190,17 +191,20 @@ module.exports = (function(){
                             d3.select('#tooltip .value-population').text( d.Population );
                             tooltip
                                 .style('left', function(){
-                                    var positionX = x - this.clientWidth/2 + r/4;
+                                    // var positionX = x - this.clientWidth/2 + r/4;
+                                    var positionX = x;
                                     return positionX + 'px';
                                 })
+                                .style('transform', 'translateX(-50%)')
                                 .style('top', function() {
-                                    var positionY = y - this.clientHeight + 40;
+                                    // var positionY = y - this.clientHeight + 40;
+                                    var positionY = y - this.clientHeight - 20;
                                     return positionY + 'px';
                                 });
                             tooltipShow();
                         })
                         .on('mouseout', tooltipHide)
-                        .call(zoom);
+                        .call(zoom).on('dblclick.zoom', null);
                 });
             });
         });
@@ -269,12 +273,29 @@ module.exports = (function(){
     };
 
     var activateMap = function(){
-        classie.remove(document.querySelector("#overlay"), 'active');
+        classie.remove(overlay, 'active');
     };
 
     var deactivateMap = function(){
-        classie.add(document.querySelector("#overlay"), 'active');
+        classie.add(overlay, 'active');
         resetMap();
+    };
+
+    var toggleActive = function(){
+        if (classie.has(overlay, 'active')){
+            classie.remove(overlay, 'active');
+        } else {
+            classie.add(overlay, 'active');
+        }
+    };
+
+    var toggleActiveAndReset = function(){
+        if (classie.has(overlay, 'active')){
+            classie.remove(overlay, 'active');
+        } else {
+            classie.add(overlay, 'active');
+            resetMap();
+        }
     };
 
     var tooltipShow = function() {
@@ -299,7 +320,9 @@ module.exports = (function(){
         deactivateMap: deactivateMap,
         resetMap: resetMap,
         zoomIn: zoomIn,
-        zoomOut: zoomOut
+        zoomOut: zoomOut,
+        toggleActive: toggleActive,
+        toggleActiveAndReset: toggleActiveAndReset
     };
 
 })();

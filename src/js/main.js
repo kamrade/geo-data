@@ -1,11 +1,12 @@
 import d3 from "d3";
-
-console.log( "d3 version is " + d3.version );
-
-// var geoData = require('./components/geo-data/geo-data');
 import geoData from './components/geo-data/geo-data';
 
+
+
 var el = "#geo-data";
+var $el = document.querySelector(el);
+
+// активируем карту со занчениями по умолчанию
 geoData.createMap(el);
 
 // test events
@@ -23,3 +24,8 @@ var zoom_in = d3.select('#zoom-in')
 
 var zoom_out = d3.select('#zoom-out')
     .on('click', geoData.zoomOut);
+
+// toggle by dblclick
+$el.addEventListener('dblclick', function(){
+    geoData.toggleActiveAndReset();
+});
