@@ -26,6 +26,6 @@ var zoom_out = d3.select('#zoom-out')
     .on('click', geoData.zoomOut);
 
 // toggle by dblclick
-$el.addEventListener('dblclick', function(){
-    geoData.toggleActiveAndReset();
-});
+// $el.addEventListener('dblclick', function(){
+//     geoData.toggleActiveAndReset();
+// });

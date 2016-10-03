@@ -52,7 +52,7 @@ var classie = ( function( window ) {
 		toggle: toggleClass
 	};
 
-	transport
+	// transport
 	if ( typeof define === 'function' && define.amd ) {
 	  // AMD
 	  define( classie );

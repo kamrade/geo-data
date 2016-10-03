@@ -1,8 +1,0 @@
-latitude,longitude,name,desc,color,source,precision,population
-39.905963,116.391248,Beijing,"Beijing, Dongcheng District, Beijing, CN",,MapQuest Open,city/town,40000000
-40.730599,-73.986581,New York,"New York City, NY, US",,MapQuest Open,city/town,25000000
-55.751634,37.618704,Moscow,"Moscow, Moscow, RU",,MapQuest Open,city/town,21000000
-19.43253,-99.13321,Mexico,"Mexico City, Cuauhtémoc, Mexico City, MX",,MapQuest Open,city/town,30000000
-51.507322,-0.127647,London,"London, London, England, GB",,MapQuest Open,city/town,21000000
-50.450107,30.52405,Kiev,"Kyiv, Shevchenkivskyi district, UA",,MapQuest Open,city/town,5000000
-43.115284,131.885401,Vladivostok,"Vladivostok, Владивостокский городской округ, Primorsky Krai, RU",,MapQuest Open,city/town,500000
